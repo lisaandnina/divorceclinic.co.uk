@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Divorce Clinic — Guided. Compassionate. Clear.</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #1a2744;
+    --navy-dark: #0f1a30;
+    --navy-mid: #243255;
+    --gold: #b8943f;
+    --gold-light: #d4aa5a;
+    --gold-pale: #f5eed8;
+    --cream: #faf8f3;
+    --white: #ffffff;
+    --text: #1a2744;
+    --text-mid: #4a5568;
+    --text-light: #8a95a3;
+    --border: #e8e2d4;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text);
+    background: var(--cream);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(250,248,243,0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 48px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 72px;
+  }
+
+  .nav-logo {
+    display: flex; align-items: center; gap: 14px;
+    text-decoration: none;
+  }
+
+  .nav-logo-mark {
+    width: 40px; height: 40px; position: relative; flex-shrink: 0;
+  }
+
+  .nav-logo-text {
+    display: flex; flex-direction: column; line-height: 1.1;
+  }
+  .nav-logo-text .name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; font-weight: 700;
+    color: var(--navy);
+    letter-spacing: 0.01em;
+  }
+  .nav-logo-text .tagline-nav {
+    font-size: 9px; letter-spacing: 2px;
+    color: var(--gold); text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .nav-links {
+    display: flex; align-items: center; gap: 0;
+    list-style: none;
+  }
+
+  .nav-links li { position: relative; }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--text-mid);
+    font-size: 13.5px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    padding: 8px 18px;
+    display: block;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--navy); }
+
+  .nav-links .has-dropdown > a::after {
+    content: ' ▾'; font-size: 10px; opacity: 0.6;
+  }
+
+  .dropdown {
+    display: none;
+    position: absolute; top: calc(100% + 8px); left: 0;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    box-shadow: 0 12px 40px rgba(26,39,68,0.12);
+    min-width: 200px;
+    padding: 8px 0;
+    z-index: 200;
+  }
+  .has-dropdown:hover .dropdown { display: block; }
+  .dropdown a {
+    padding: 10px 20px;
+    font-size: 13px;
+    color: var(--text-mid);
+    border-radius: 0;
+  }
+  .dropdown a:hover { color: var(--navy); background: var(--cream); }
+
+  .nav-cta {
+    background: var(--navy);
+    color: var(--white) !important;
+    padding: 10px 22px !important;
+    border-radius: 6px;
+    font-weight: 500 !important;
+    margin-left: 12px;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--navy-dark) !important; color: var(--white) !important; }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    padding-top: 72px;
+  }
+
+  .hero-left {
+    background: var(--navy-dark);
+    padding: 80px 64px 80px 80px;
+    display: flex; flex-direction: column; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+
+  .hero-left::before {
+    content: '';
+    position: absolute; bottom: -120px; left: -80px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    border: 1px solid rgba(184,148,63,0.15);
+  }
+  .hero-left::after {
+    content: '';
+    position: absolute; bottom: -60px; left: -40px;
+    width: 260px; height: 260px;
+    border-radius: 50%;
+    border: 1px solid rgba(184,148,63,0.1);
+  }
+
+  .hero-eyebrow {
+    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold); font-weight: 500; margin-bottom: 24px;
+  }
+
+  .hero-h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(44px, 5vw, 64px);
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 28px;
+  }
+  .hero-h1 em { font-style: italic; color: var(--gold-light); }
+
+  .hero-sub {
+    font-size: 16px; color: rgba(255,255,255,0.65);
+    line-height: 1.7; max-width: 420px; margin-bottom: 44px;
+    font-weight: 300;
+  }
+
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--navy-dark);
+    padding: 14px 30px;
+    border-radius: 6px;
+    font-weight: 500; font-size: 14px;
+    text-decoration: none; letter-spacing: 0.02em;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  .btn-outline {
+    border: 1px solid rgba(255,255,255,0.3);
+    color: rgba(255,255,255,0.85);
+    padding: 14px 30px;
+    border-radius: 6px;
+    font-weight: 400; font-size: 14px;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+    display: inline-block;
+  }
+  .btn-outline:hover { border-color: rgba(255,255,255,0.7); color: var(--white); }
+
+  .hero-right {
+    background: var(--cream);
+    display: flex; align-items: center; justify-content: center;
+    padding: 60px 64px 60px 48px;
+    position: relative;
+  }
+
+  .hero-cards {
+    display: flex; flex-direction: column; gap: 16px;
+    width: 100%; max-width: 380px;
+  }
+
+  .hero-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px 24px;
+    display: flex; align-items: flex-start; gap: 16px;
+    animation: slideUp 0.5s ease both;
+  }
+  .hero-card:nth-child(1) { animation-delay: 0.1s; }
+  .hero-card:nth-child(2) { animation-delay: 0.2s; }
+  .hero-card:nth-child(3) { animation-delay: 0.3s; }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-card-icon {
+    width: 40px; height: 40px; border-radius: 8px;
+    background: var(--gold-pale);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .hero-card-icon svg { width: 20px; height: 20px; }
+
+  .hero-card h4 {
+    font-size: 14px; font-weight: 500; color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .hero-card p { font-size: 13px; color: var(--text-light); line-height: 1.5; }
+
+  .hero-stat-row {
+    display: flex; gap: 32px; margin-top: 8px; padding: 20px 24px;
+    background: var(--gold-pale); border-radius: 12px;
+  }
+  .hero-stat { text-align: center; }
+  .hero-stat .num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px; font-weight: 600; color: var(--navy);
+    line-height: 1;
+  }
+  .hero-stat .label { font-size: 11px; color: var(--text-light); margin-top: 4px; letter-spacing: 0.5px; }
+
+  /* ─── SECTION SHARED ─── */
+  section { padding: 96px 80px; }
+
+  .section-label {
+    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold); font-weight: 500; margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 3.5vw, 48px);
+    font-weight: 400; color: var(--navy);
+    line-height: 1.2; margin-bottom: 20px;
+  }
+  .section-title em { font-style: italic; color: var(--gold); }
+
+  .section-sub {
+    font-size: 16px; color: var(--text-mid);
+    line-height: 1.7; max-width: 560px; font-weight: 300;
+  }
+
+  .gold-rule {
+    width: 48px; height: 2px; background: var(--gold);
+    margin: 24px 0;
+  }
+
+  /* ─── ABOUT ─── */
+  #about { background: var(--white); }
+
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: center; margin-top: 60px;
+  }
+
+  .about-visual {
+    position: relative; height: 400px;
+  }
+
+  /* Recreate logo visually in CSS */
+  .logo-circles {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -55%);
+  }
+  .circle-navy {
+    width: 220px; height: 220px; border-radius: 50%;
+    background: var(--navy);
+    position: absolute; top: 0; left: 0;
+  }
+  .circle-gold {
+    width: 200px; height: 200px; border-radius: 50%;
+    background: var(--gold);
+    position: absolute; top: 60px; left: 120px;
+    opacity: 0.9;
+  }
+  .about-tagline-block {
+    position: absolute; bottom: 20px; left: 0; right: 0;
+    text-align: center;
+  }
+  .about-tagline-block .big-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px; font-weight: 700; color: var(--navy);
+    display: block;
+  }
+  .about-tagline-block .sub-name {
+    font-size: 10px; letter-spacing: 4px; color: var(--gold);
+    text-transform: uppercase; margin-top: 4px; display: block;
+  }
+
+  .about-content p {
+    font-size: 16px; color: var(--text-mid);
+    line-height: 1.8; margin-bottom: 18px; font-weight: 300;
+  }
+
+  .about-pillars {
+    display: flex; gap: 24px; margin-top: 32px;
+  }
+  .pillar {
+    flex: 1; border-top: 2px solid var(--gold);
+    padding-top: 16px;
+  }
+  .pillar h5 {
+    font-size: 13px; font-weight: 500; color: var(--navy);
+    margin-bottom: 6px; letter-spacing: 0.02em;
+  }
+  .pillar p { font-size: 13px; color: var(--text-light); line-height: 1.5; }
+
+  /* ─── SERVICES ─── */
+  #services { background: var(--cream); }
+
+  .services-intro {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: end; margin-bottom: 60px;
+  }
+
+  .services-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .service-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 32px 28px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px; background: var(--gold);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .service-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(26,39,68,0.1); }
+  .service-card:hover::before { transform: scaleX(1); }
+
+  .service-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px; font-weight: 300;
+    color: var(--gold-pale); line-height: 1;
+    margin-bottom: 16px;
+  }
+  .service-card h3 {
+    font-size: 17px; font-weight: 500; color: var(--navy);
+    margin-bottom: 10px;
+  }
+  .service-card p {
+    font-size: 14px; color: var(--text-mid);
+    line-height: 1.65;
+  }
+  .service-card .tag {
+    display: inline-block; margin-top: 18px;
+    font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--gold); font-weight: 500;
+  }
+
+  /* ─── PACKAGES ─── */
+  #packages { background: var(--navy-dark); padding: 96px 80px; }
+
+  .packages-header { text-align: center; margin-bottom: 60px; }
+  .packages-header .section-label { color: var(--gold-light); }
+  .packages-header .section-title { color: var(--white); }
+  .packages-header .section-sub { color: rgba(255,255,255,0.6); margin: 0 auto; text-align: center; }
+
+  .packages-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 24px; max-width: 1000px; margin: 0 auto;
+  }
+
+  .package-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 40px 32px;
+    text-align: center;
+    transition: transform 0.2s;
+  }
+  .package-card.featured {
+    background: var(--gold);
+    border-color: var(--gold);
+  }
+  .package-card:hover { transform: translateY(-4px); }
+
+  .package-card .pkg-label {
+    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+    color: rgba(255,255,255,0.5); margin-bottom: 16px; font-weight: 500;
+  }
+  .package-card.featured .pkg-label { color: rgba(26,39,68,0.7); }
+
+  .package-card .pkg-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px; font-weight: 600; color: var(--white);
+    margin-bottom: 20px;
+  }
+  .package-card.featured .pkg-name { color: var(--navy-dark); }
+
+  .package-card ul {
+    list-style: none; margin-bottom: 32px;
+    text-align: left;
+  }
+  .package-card ul li {
+    font-size: 14px; color: rgba(255,255,255,0.7);
+    padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.08);
+    display: flex; align-items: flex-start; gap: 10px;
+    line-height: 1.4;
+  }
+  .package-card.featured ul li { color: rgba(26,39,68,0.8); border-bottom-color: rgba(26,39,68,0.1); }
+  .package-card ul li::before {
+    content: '—'; color: var(--gold-light); flex-shrink: 0; font-size: 12px; margin-top: 1px;
+  }
+  .package-card.featured ul li::before { color: var(--navy); }
+
+  .btn-gold {
+    background: var(--gold); color: var(--navy-dark);
+    padding: 13px 28px; border-radius: 6px;
+    font-weight: 500; font-size: 14px;
+    text-decoration: none; display: inline-block;
+    transition: background 0.2s;
+  }
+  .btn-gold:hover { background: var(--gold-light); }
+
+  .btn-ghost {
+    border: 1px solid rgba(255,255,255,0.25); color: rgba(255,255,255,0.85);
+    padding: 13px 28px; border-radius: 6px;
+    font-weight: 400; font-size: 14px;
+    text-decoration: none; display: inline-block;
+    transition: border-color 0.2s;
+  }
+  .btn-ghost:hover { border-color: rgba(255,255,255,0.6); }
+
+  .btn-navy {
+    background: var(--navy-dark); color: var(--white);
+    padding: 13px 28px; border-radius: 6px;
+    font-weight: 500; font-size: 14px;
+    text-decoration: none; display: inline-block;
+    transition: background 0.2s;
+  }
+
+  /* ─── JOURNEY ─── */
+  #journey { background: var(--white); }
+
+  .journey-steps {
+    display: grid; grid-template-columns: repeat(5, 1fr);
+    gap: 0; margin-top: 60px; position: relative;
+  }
+
+  .journey-steps::before {
+    content: '';
+    position: absolute; top: 28px; left: 10%; right: 10%;
+    height: 1px; background: var(--gold); opacity: 0.4;
+  }
+
+  .journey-step { text-align: center; padding: 0 12px; }
+
+  .step-dot {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: var(--navy); border: 3px solid var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 20px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; font-weight: 600; color: var(--white);
+  }
+
+  .journey-step h4 { font-size: 14px; font-weight: 500; color: var(--navy); margin-bottom: 8px; }
+  .journey-step p { font-size: 13px; color: var(--text-light); line-height: 1.5; }
+
+  /* ─── TEAM ─── */
+  #team { background: var(--cream); }
+
+  .team-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 32px; margin-top: 60px;
+  }
+
+  .team-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px; overflow: hidden;
+    transition: transform 0.2s;
+  }
+  .team-card:hover { transform: translateY(-4px); }
+
+  .team-photo {
+    height: 200px;
+    background: var(--navy);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .team-photo-1 { background: linear-gradient(135deg, #1a2744 60%, #2a3d6e); }
+  .team-photo-2 { background: linear-gradient(135deg, #243255 60%, #b8943f 200%); }
+  .team-photo-3 { background: linear-gradient(135deg, #1a2744 40%, #8a6e2a 200%); }
+
+  .team-initials {
+    width: 72px; height: 72px; border-radius: 50%;
+    border: 2px solid rgba(184,148,63,0.6);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px; font-weight: 400; color: var(--white);
+  }
+
+  .team-info { padding: 24px 24px 28px; }
+  .team-info h3 { font-size: 17px; font-weight: 500; color: var(--navy); margin-bottom: 4px; }
+  .team-info .role { font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 12px; }
+  .team-info p { font-size: 13.5px; color: var(--text-mid); line-height: 1.6; }
+
+  /* ─── BLOG ─── */
+  #blog { background: var(--white); }
+
+  .blog-grid {
+    display: grid; grid-template-columns: 2fr 1fr 1fr;
+    gap: 24px; margin-top: 60px;
+  }
+
+  .blog-card {
+    border-radius: 12px; overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--white);
+    transition: transform 0.2s;
+  }
+  .blog-card:hover { transform: translateY(-3px); }
+
+  .blog-img {
+    height: 200px; background: var(--navy);
+    display: flex; align-items: flex-end;
+    padding: 20px;
+  }
+  .blog-img-1 { background: linear-gradient(150deg, #1a2744, #b8943f55, #1a2744); }
+  .blog-img-2 { background: linear-gradient(150deg, #0f1a30, #2a3d6e); }
+  .blog-img-3 { background: linear-gradient(150deg, #243255, #1a2744); }
+
+  .blog-card.featured .blog-img { height: 260px; }
+
+  .blog-img .blog-tag {
+    background: var(--gold); color: var(--navy-dark);
+    font-size: 11px; letter-spacing: 1px; text-transform: uppercase;
+    font-weight: 500; padding: 5px 12px; border-radius: 4px;
+  }
+
+  .blog-body { padding: 24px; }
+  .blog-meta { font-size: 12px; color: var(--text-light); margin-bottom: 10px; }
+  .blog-body h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; font-weight: 600; color: var(--navy);
+    line-height: 1.3; margin-bottom: 10px;
+  }
+  .blog-card:not(.featured) .blog-body h3 { font-size: 16px; }
+  .blog-body p { font-size: 14px; color: var(--text-mid); line-height: 1.6; }
+  .blog-read-more {
+    display: inline-block; margin-top: 16px;
+    font-size: 13px; color: var(--gold); font-weight: 500;
+    text-decoration: none; letter-spacing: 0.02em;
+  }
+  .blog-read-more:hover { color: var(--navy); }
+
+  /* ─── CONTACT ─── */
+  #contact { background: var(--cream); }
+
+  .contact-grid {
+    display: grid; grid-template-columns: 1fr 1.4fr;
+    gap: 80px; margin-top: 60px; align-items: start;
+  }
+
+  .contact-info h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px; color: var(--navy); margin-bottom: 16px;
+  }
+  .contact-info p { font-size: 15px; color: var(--text-mid); line-height: 1.7; margin-bottom: 32px; font-weight: 300; }
+
+  .contact-detail {
+    display: flex; align-items: flex-start; gap: 14px;
+    margin-bottom: 20px;
+  }
+  .contact-icon {
+    width: 38px; height: 38px; border-radius: 8px;
+    background: var(--gold-pale); flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gold); font-size: 16px;
+  }
+  .contact-detail h5 { font-size: 13px; font-weight: 500; color: var(--navy); }
+  .contact-detail p { font-size: 13px; color: var(--text-mid); margin-bottom: 0; }
+
+  .contact-form {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px; padding: 40px;
+  }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  .form-group { margin-bottom: 20px; }
+  .form-group label {
+    display: block; font-size: 13px; font-weight: 500;
+    color: var(--navy); margin-bottom: 7px;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%; padding: 11px 14px;
+    border: 1px solid var(--border); border-radius: 7px;
+    font-family: 'DM Sans', sans-serif; font-size: 14px;
+    color: var(--text); background: var(--cream);
+    outline: none; transition: border-color 0.2s;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--gold); }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+
+  .btn-submit {
+    width: 100%; background: var(--navy);
+    color: var(--white); padding: 14px;
+    border: none; border-radius: 7px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px; font-weight: 500;
+    cursor: pointer; letter-spacing: 0.02em;
+    transition: background 0.2s;
+  }
+  .btn-submit:hover { background: var(--navy-mid); }
+
+  .form-note { font-size: 12px; color: var(--text-light); text-align: center; margin-top: 12px; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--navy-dark);
+    padding: 64px 80px 32px;
+    color: rgba(255,255,255,0.6);
+  }
+
+  .footer-grid {
+    display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 48px; margin-bottom: 48px;
+  }
+
+  .footer-brand .brand-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 700; color: var(--white);
+    display: block; margin-bottom: 6px;
+  }
+  .footer-brand .brand-tag {
+    font-size: 10px; letter-spacing: 2.5px; color: var(--gold);
+    text-transform: uppercase; display: block; margin-bottom: 16px;
+  }
+  .footer-brand p { font-size: 13.5px; line-height: 1.7; font-weight: 300; }
+
+  .footer-col h5 {
+    font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gold); font-weight: 500; margin-bottom: 18px;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 10px; }
+  .footer-col ul li a {
+    text-decoration: none; color: rgba(255,255,255,0.55);
+    font-size: 14px; transition: color 0.2s;
+  }
+  .footer-col ul li a:hover { color: var(--white); }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 28px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer-bottom p { font-size: 13px; }
+  .footer-disclaimer {
+    font-size: 12px; color: rgba(255,255,255,0.35);
+    max-width: 500px; line-height: 1.5; text-align: right;
+  }
+
+  /* ─── TRUST BAR ─── */
+  .trust-bar {
+    background: var(--gold-pale);
+    padding: 24px 80px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-top: 1px solid #e8d9b0; border-bottom: 1px solid #e8d9b0;
+  }
+  .trust-item {
+    display: flex; align-items: center; gap: 12px;
+  }
+  .trust-item .ti { font-size: 20px; color: var(--gold); }
+  .trust-item span { font-size: 13.5px; color: var(--navy); font-weight: 400; }
+  .trust-divider { width: 1px; height: 32px; background: #d4c08a; }
+
+  /* ─── SCROLL ANIMATIONS ─── */
+  .reveal {
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ─── MOBILE ─── */
+  @media (max-width: 900px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    section { padding: 64px 24px; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-left { padding: 60px 24px; }
+    .hero-right { display: none; }
+    .about-grid, .services-intro, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    .services-grid, .packages-grid, .team-grid { grid-template-columns: 1fr; }
+    .journey-steps { grid-template-columns: 1fr 1fr; gap: 32px; }
+    .journey-steps::before { display: none; }
+    .blog-grid { grid-template-columns: 1fr; }
+    footer { padding: 48px 24px 24px; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+    .trust-bar { flex-direction: column; gap: 16px; padding: 24px; }
+    .trust-divider { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── NAVIGATION ─── -->
+<nav>
+  <a href="#" class="nav-logo">
+    <svg class="nav-logo-mark" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="15" cy="15" r="14" fill="#1a2744"/>
+      <circle cx="26" cy="26" r="13" fill="#b8943f" opacity="0.9"/>
+      <line x1="8" y1="22" x2="22" y2="8" stroke="white" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+    <div class="nav-logo-text">
+      <span class="name">Divorce Clinic</span>
+      <span class="tagline-nav">Guided · Compassionate · Clear</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#packages">Packages</a></li>
+    <li><a href="#team">Team</a></li>
+    <li class="has-dropdown">
+      <a href="#blog">Blog</a>
+      <div class="dropdown">
+        <a href="#blog">All Articles</a>
+        <a href="#blog">Co-Parenting Guides</a>
+        <a href="#blog">Financial Advice</a>
+        <a href="#blog">Consent Orders</a>
+        <a href="#blog">Wellbeing</a>
+      </div>
+    </li>
+    <li class="has-dropdown">
+      <a href="#contact">Contact</a>
+      <div class="dropdown">
+        <a href="#contact">Book a Clinic</a>
+        <a href="#contact">Get in Touch</a>
+        <a href="#contact">FAQ</a>
+      </div>
+    </li>
+    <li><a href="#contact" class="nav-cta">Book Free Call</a></li>
+  </ul>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section class="hero" id="home">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Practical Guidance. Real Support.</p>
+    <h1 class="hero-h1">
+      Your divorce journey,<br>
+      <em>without</em> the<br>legal fees.
+    </h1>
+    <p class="hero-sub">
+      We guide you step by step through separation — from consent orders and financial planning to co-parenting and final order — so you can move forward with clarity and confidence.
+    </p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">Book a Free Consultation</a>
+      <a href="#services" class="btn-outline">Explore Services</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-cards">
+      <div class="hero-stat-row">
+        <div class="hero-stat"><div class="num">£0</div><div class="label">Legal Fees Required</div></div>
+        <div class="hero-stat"><div class="num">500+</div><div class="label">Families Supported</div></div>
+        <div class="hero-stat"><div class="num">100%</div><div class="label">Practical Focus</div></div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#b8943f" stroke-width="1.5"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+        </div>
+        <div>
+          <h4>Consent Order Support</h4>
+          <p>We help you understand and complete consent forms correctly — no solicitor needed.</p>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#b8943f" stroke-width="1.5"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        </div>
+        <div>
+          <h4>Co-Parenting Guidance</h4>
+          <p>Practical frameworks for child arrangements that work for your whole family.</p>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#b8943f" stroke-width="1.5"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <div>
+          <h4>Financial Planning Support</h4>
+          <p>Navigate asset splits, pensions, and finances with confidence and clarity.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TRUST BAR ─── -->
+<div class="trust-bar">
+  <div class="trust-item"><span>✦</span><span>Not legal advice — practical guidance you can act on</span></div>
+  <div class="trust-divider"></div>
+  <div class="trust-item"><span>✦</span><span>Guided from separation to final order</span></div>
+  <div class="trust-divider"></div>
+  <div class="trust-item"><span>✦</span><span>One-off clinics or ongoing support packages</span></div>
+  <div class="trust-divider"></div>
+  <div class="trust-item"><span>✦</span><span>Confidential, compassionate, affordable</span></div>
+</div>
+
+<!-- ─── ABOUT ─── -->
+<section id="about">
+  <div class="about-grid reveal">
+    <div class="about-visual">
+      <div class="logo-circles">
+        <div class="circle-navy"></div>
+        <div class="circle-gold"></div>
+      </div>
+      <div class="about-tagline-block">
+        <span class="big-name">Divorce Clinic</span>
+        <span class="sub-name">Guided · Compassionate · Clear</span>
+      </div>
+    </div>
+    <div class="about-content">
+      <p class="section-label">About Us</p>
+      <h2 class="section-title">We believe divorce doesn't have to mean <em>devastation</em></h2>
+      <div class="gold-rule"></div>
+      <p>Divorce is one of life's most challenging transitions — emotionally, practically, and financially. Most people don't need a courtroom. They need someone in their corner who can help them understand what's happening, what needs to be done, and how to move forward without spending thousands on solicitors.</p>
+      <p>That's exactly what we do. Divorce Clinic was founded to give people practical, accessible guidance through every stage of separation — from the very first conversation right through to final order.</p>
+      <p>We don't give legal advice. We give you something just as valuable: the knowledge, tools, and support to navigate the process yourself — clearly and confidently.</p>
+      <div class="about-pillars">
+        <div class="pillar"><h5>Guided</h5><p>Step-by-step support from start to final order</p></div>
+        <div class="pillar"><h5>Compassionate</h5><p>We meet you where you are, without judgement</p></div>
+        <div class="pillar"><h5>Clear</h5><p>Plain English. No jargon. No hidden costs.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SERVICES ─── -->
+<section id="services">
+  <div class="services-intro reveal">
+    <div>
+      <p class="section-label">What We Offer</p>
+      <h2 class="section-title">Practical support for every stage of your journey</h2>
+    </div>
+    <div>
+      <p class="section-sub">Whether you're just beginning to consider separation or are partway through the process, our services are designed to meet you exactly where you are.</p>
+    </div>
+  </div>
+  <div class="services-grid reveal">
+    <div class="service-card">
+      <div class="service-number">01</div>
+      <h3>Initial Guidance Clinic</h3>
+      <p>A one-off session to understand your situation, explain the divorce process, and map out your next steps. Ideal if you're just starting out and don't know where to begin.</p>
+      <span class="tag">One-off Session</span>
+    </div>
+    <div class="service-card">
+      <div class="service-number">02</div>
+      <h3>Consent Order Support</h3>
+      <p>We guide you through completing and understanding consent orders and financial remedy forms — helping you avoid costly mistakes without needing a solicitor.</p>
+      <span class="tag">Documentation Help</span>
+    </div>
+    <div class="service-card">
+      <div class="service-number">03</div>
+      <h3>Financial Guidance</h3>
+      <p>Practical advice on dividing assets, understanding pension sharing, managing joint accounts, and planning for your financial future post-separation.</p>
+      <span class="tag">Financial Support</span>
+    </div>
+    <div class="service-card">
+      <div class="service-number">04</div>
+      <h3>Co-Parenting Framework</h3>
+      <p>Support creating child arrangements that prioritise your children's wellbeing. We help you build practical plans both parents can commit to.</p>
+      <span class="tag">Family Planning</span>
+    </div>
+    <div class="service-card">
+      <div class="service-number">05</div>
+      <h3>Process Navigation</h3>
+      <p>Guidance through the court process, form-filling, deadlines, and correspondence — so nothing is missed and you always know what comes next.</p>
+      <span class="tag">Ongoing Guidance</span>
+    </div>
+    <div class="service-card">
+      <div class="service-number">06</div>
+      <h3>Final Order Support</h3>
+      <p>Help ensuring your final order is correctly filed and your divorce is properly concluded — from decree nisi through to absolute and beyond.</p>
+      <span class="tag">Completion Support</span>
+    </div>
+  </div>
+</section>
+
+<!-- ─── JOURNEY ─── -->
+<section id="journey" style="background: var(--white);">
+  <div class="reveal" style="text-align: center; margin-bottom: 0;">
+    <p class="section-label" style="text-align:center;">How It Works</p>
+    <h2 class="section-title" style="text-align:center;">From first call to <em>final order</em></h2>
+  </div>
+  <div class="journey-steps reveal">
+    <div class="journey-step">
+      <div class="step-dot">1</div>
+      <h4>Free Consultation</h4>
+      <p>A no-obligation call to understand your situation and how we can help</p>
+    </div>
+    <div class="journey-step">
+      <div class="step-dot">2</div>
+      <h4>Personalised Plan</h4>
+      <p>We map your journey and recommend the right package or clinic sessions</p>
+    </div>
+    <div class="journey-step">
+      <div class="step-dot">3</div>
+      <h4>Guided Support</h4>
+      <p>Hands-on help with forms, finances, and co-parenting at every stage</p>
+    </div>
+    <div class="journey-step">
+      <div class="step-dot">4</div>
+      <h4>Process Navigation</h4>
+      <p>Clear guidance through court requirements and paperwork deadlines</p>
+    </div>
+    <div class="journey-step">
+      <div class="step-dot">5</div>
+      <h4>Final Order</h4>
+      <p>Your divorce is concluded properly — and you move forward with confidence</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PACKAGES ─── -->
+<section id="packages">
+  <div class="packages-header reveal">
+    <p class="section-label">Pricing</p>
+    <h2 class="section-title">Support that fits your needs</h2>
+    <p class="section-sub">Whether you need a single session or full journey support, we have a package designed around you.</p>
+  </div>
+  <div class="packages-grid reveal">
+    <div class="package-card">
+      <p class="pkg-label">One-Off</p>
+      <h3 class="pkg-name">Single Clinic</h3>
+      <ul>
+        <li>90-minute guided session</li>
+        <li>One focused area of support</li>
+        <li>Written action plan</li>
+        <li>Form-filling guidance</li>
+        <li>Follow-up resource pack</li>
+      </ul>
+      <a href="#contact" class="btn-ghost">Book a Clinic</a>
+    </div>
+    <div class="package-card featured">
+      <p class="pkg-label">Most Popular</p>
+      <h3 class="pkg-name" style="color: var(--navy-dark);">Journey Package</h3>
+      <ul>
+        <li>Full process from start to final order</li>
+        <li>Unlimited clinic sessions</li>
+        <li>Consent order &amp; financial support</li>
+        <li>Co-parenting framework</li>
+        <li>Document review &amp; filing guidance</li>
+        <li>Priority email support</li>
+      </ul>
+      <a href="#contact" class="btn-navy">Get Started</a>
+    </div>
+    <div class="package-card">
+      <p class="pkg-label">Targeted</p>
+      <h3 class="pkg-name">Topic Package</h3>
+      <ul>
+        <li>3 sessions on a specific topic</li>
+        <li>Financial or co-parenting focus</li>
+        <li>Consent order deep-dive</li>
+        <li>Tailored resource pack</li>
+        <li>Email support between sessions</li>
+      </ul>
+      <a href="#contact" class="btn-ghost">Learn More</a>
+    </div>
+  </div>
+  <p style="text-align: center; margin-top: 32px; font-size: 13px; color: rgba(255,255,255,0.4);">All pricing discussed on your free initial call. No hidden fees, ever.</p>
+</section>
+
+<!-- ─── TEAM ─── -->
+<section id="team">
+  <div class="reveal">
+    <p class="section-label">Our Team</p>
+    <h2 class="section-title">Experienced, empathetic, <em>on your side</em></h2>
+    <p class="section-sub">Our team brings together expertise in family mediation, financial planning, and wellbeing support — all dedicated to making your journey as smooth as possible.</p>
+  </div>
+  <div class="team-grid reveal">
+    <div class="team-card">
+      <div class="team-photo team-photo-1">
+        <div class="team-initials">SC</div>
+      </div>
+      <div class="team-info">
+        <h3>Sarah Clarke</h3>
+        <p class="role">Founder & Lead Advisor</p>
+        <p>With over 12 years supporting families through separation, Sarah founded Divorce Clinic to make practical guidance accessible to everyone — not just those who can afford solicitors.</p>
+      </div>
+    </div>
+    <div class="team-card">
+      <div class="team-photo team-photo-2">
+        <div class="team-initials">JM</div>
+      </div>
+      <div class="team-info">
+        <h3>James Mitchell</h3>
+        <p class="role">Financial Guidance Specialist</p>
+        <p>A former financial planner, James helps clients navigate asset division, pension sharing, and post-divorce financial planning with clarity and practical focus.</p>
+      </div>
+    </div>
+    <div class="team-card">
+      <div class="team-photo team-photo-3">
+        <div class="team-initials">RP</div>
+      </div>
+      <div class="team-info">
+        <h3>Rachel Patel</h3>
+        <p class="role">Co-Parenting & Wellbeing Advisor</p>
+        <p>Rachel specialises in helping parents create child arrangements that work — bringing a calm, child-focused approach to even the most complex family situations.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── BLOG ─── -->
+<section id="blog">
+  <div class="reveal">
+    <p class="section-label">Insights & Guides</p>
+    <h2 class="section-title">Resources to help you move <em>forward</em></h2>
+  </div>
+  <div class="blog-grid reveal">
+    <div class="blog-card featured">
+      <div class="blog-img blog-img-1">
+        <span class="blog-tag">Co-Parenting</span>
+      </div>
+      <div class="blog-body">
+        <p class="blog-meta">12 April 2025 · 8 min read</p>
+        <h3>How to create a co-parenting plan that actually works — without going to court</h3>
+        <p>A practical, step-by-step guide to building a child arrangement framework both parents can commit to, based on your children's needs — not legal battles.</p>
+        <a href="#" class="blog-read-more">Read article →</a>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-img blog-img-2" style="height:140px">
+        <span class="blog-tag">Finance</span>
+      </div>
+      <div class="blog-body">
+        <p class="blog-meta">2 March 2025</p>
+        <h3>The five financial questions to answer before you start divorce proceedings</h3>
+        <a href="#" class="blog-read-more">Read →</a>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-img blog-img-3" style="height:140px">
+        <span class="blog-tag">Process</span>
+      </div>
+      <div class="blog-body">
+        <p class="blog-meta">18 February 2025</p>
+        <h3>Consent orders explained: what they are and why you need one</h3>
+        <a href="#" class="blog-read-more">Read →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CONTACT ─── -->
+<section id="contact">
+  <div class="contact-grid reveal">
+    <div class="contact-info">
+      <p class="section-label">Get in Touch</p>
+      <h2 class="section-title">Start with a <em>free</em> conversation</h2>
+      <div class="gold-rule"></div>
+      <p>Every journey begins with understanding where you are. Book a free 30-minute call and we'll listen, ask the right questions, and explain how we can help — with absolutely no obligation.</p>
+      <div class="contact-detail">
+        <div class="contact-icon">📧</div>
+        <div><h5>Email</h5><p>hello@divorceclinic.co.uk</p></div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-icon">📞</div>
+        <div><h5>Phone</h5><p>0800 123 4567</p></div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-icon">📍</div>
+        <div><h5>Website</h5><p>www.divorceclinic.co.uk</p></div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-icon">🕐</div>
+        <div><h5>Hours</h5><p>Mon–Fri 9am–6pm · Sat 10am–2pm</p></div>
+      </div>
+    </div>
+    <div class="contact-form">
+      <h3 style="font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--navy); margin-bottom:24px;">Book your free consultation</h3>
+      <div class="form-row">
+        <div class="form-group"><label>First Name</label><input type="text" placeholder="Sarah"></div>
+        <div class="form-group"><label>Last Name</label><input type="text" placeholder="Clarke"></div>
+      </div>
+      <div class="form-group"><label>Email Address</label><input type="email" placeholder="sarah@example.com"></div>
+      <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="07700 000000"></div>
+      <div class="form-group">
+        <label>What do you need help with?</label>
+        <select>
+          <option value="">Select a topic...</option>
+          <option>Getting started — I don't know where to begin</option>
+          <option>Consent orders and paperwork</option>
+          <option>Financial guidance and asset division</option>
+          <option>Co-parenting and child arrangements</option>
+          <option>Understanding the court process</option>
+          <option>Support through to final order</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Anything else you'd like us to know?</label><textarea placeholder="Tell us a little about your situation (optional)"></textarea></div>
+      <button class="btn-submit">Book My Free Call</button>
+      <p class="form-note">We respond within 24 hours. All enquiries are strictly confidential. <br>Divorce Clinic provides practical guidance only and does not offer legal advice.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="brand-name">Divorce Clinic</span>
+      <span class="brand-tag">Guided · Compassionate · Clear</span>
+      <p>Practical guidance and support for people navigating separation and divorce — without costly legal fees. From first steps to final order, we're with you every step of the way.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Services</h5>
+      <ul>
+        <li><a href="#services">Initial Guidance Clinic</a></li>
+        <li><a href="#services">Consent Order Support</a></li>
+        <li><a href="#services">Financial Guidance</a></li>
+        <li><a href="#services">Co-Parenting Support</a></li>
+        <li><a href="#services">Final Order Help</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#team">Our Team</a></li>
+        <li><a href="#packages">Pricing</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Resources</h5>
+      <ul>
+        <li><a href="#">Free Divorce Checklist</a></li>
+        <li><a href="#">Consent Order Guide</a></li>
+        <li><a href="#">Financial Planning Guide</a></li>
+        <li><a href="#">Co-Parenting Template</a></li>
+        <li><a href="#">FAQ</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Divorce Clinic · <a href="#" style="color:rgba(255,255,255,0.4); text-decoration:none;">Privacy Policy</a> · <a href="#" style="color:rgba(255,255,255,0.4); text-decoration:none;">Terms of Use</a> · www.divorceclinic.co.uk</p>
+    <p class="footer-disclaimer">Divorce Clinic provides practical guidance and support only. We are not solicitors and do not provide legal advice. For legal advice, please consult a qualified family law solicitor.</p>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
